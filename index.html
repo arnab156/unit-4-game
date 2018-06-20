@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery Unit-4 Game</title>
+
+  <!-- Added link to the jQuery Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- Added a link to Reset, Bootstrap & CSS-->
+  <!-- <link rel="stylesheet" href="/assets/css/reset.css"> -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+
+<style>
+ body {
+    background-image: url("assets/images/circles-dark.png");
+ }
+ img {
+    border-radius: 50%;
+    width: 150px;
+    height:150px;
+}
+ 
+</style>
+
+</head>
+<body>
+<div class="container-fluid"> 
+    <h1 class="display-1 text-sm-center">Crystal Collector</h1>
+
+    <div style="background-color: palevioletred;">
+        <h2 class="display-4 text-sm-center">Instructions:</h2>
+        <p class="text-sm-center text-light"> You will be given a random number at the start of the game. if you do not like the number, please refresh the page</p>
+        <p class="text-sm-center text-light"> There are four crystals. By clicking on each crystal you will add a specific number of points to your total score.</p>
+        <p class="text-sm-center text-light"> You will win if your total score matches the random number in the black box is the same. If your number exceeds, you loose.</p>
+        <p class="text-sm-center text-light"> Value of the crystal is hidden from you until you click on them. Refresh page to get a new number and crystal values.</p>
+    <br>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-4" style="background-color: none;"> &nbsp;
+        </div>
+        <div class="col-sm-2" style="background-color: black; color: oldlace;">
+            <br>
+            <p id="compRandom" class = "text-center"> Computer Generated Random Number</p>
+        </div>
+        <div class="col-sm-2" style="background-color: gray; color: oldlace;"> 
+            <p class = "status"id = "status"></p>
+            <p id="win"> Win:</p>
+            <p id="loss"> Loss:</p>
+        </div>
+        <div class="col-sm-4" style="background-color: none;"> &nbsp;
+        </div>
+    </div>
+<br>
+    <div class="row"> 
+        <!-- four images with ID -->
+        <div class="col-sm-3" style="background-color: none;"> &nbsp;</div>
+        <div id="crystal"class="col-sm-6" style="background-color: none; left:50px;">
+                <img id = "1" class = "crystal-image"src = "assets/images/1.png" alt="1">
+                <img id = "2" class = "crystal-image"src = "assets/images/2.png" alt="2">
+                <img id = "3" class = "crystal-image"src = "assets/images/3.png" alt="3">
+                <img id = "4" class = "crystal-image"src = "assets/images/4.png" alt="4">
+        </div>
+        <div class="col-sm-3" style="background-color: none;"> &nbsp;</div>
+        
+    </div>
+    
+    <h2 class="display-4 text-sm-center">Your Score is:</h2>
+    <div class="row">
+        <div class="col-sm-4" style="background-color: none;"> &nbsp;</div>
+        <div class="col-sm-4" style="background-color: gray; color:oldlace;"> 
+            <p id = "addedNum" class = "text-center"></p>
+         </div>
+        <div class="col-sm-4" style="background-color: none;"> &nbsp;</div>
+        </div>
+
+
+
+   <script>
+     $(document).ready(function() {
+        // var one, two, three, four;
+        var win = 0;
+        var loss = 0;
+        var a = 0;
+        var b = 0;
+        var c = 0;
+        var d = 0;
+    
+        
+        // function randomNum() {
+        var x = document.getElementById("compRandom");
+        x.textContent = Math.floor((Math.random() * 120) + 8);
+        var compRandom = x.textContent;
+       
+        // var one = document.getElementById("1");
+         a = Math.floor((Math.random() * 12) + 0);
+        
+        // var two = document.getElementById("2");
+         b = Math.floor((Math.random() * 12) + 0);
+        
+        // var three = document.getElementById("3");
+         c = Math.floor((Math.random() * 12) + 0);
+       
+        // var four = document.getElementById("4");
+         d = Math.floor((Math.random() * 12) + 0);
+       
+        console.log ("a value is:"+ a);
+        console.log ("b value is:"+b);
+        console.log ("c value is:"+c);
+        console.log ("d value is:"+d);
+        console.log ("compRandom value is:" +compRandom);
+       
+        // }
+        // randomNum();
+
+        var isCalculated = false;
+        var addedNumber = 0;
+        var isOperatorChosen = false;
+        // var operator = "";
+
+        function initializeGame() {
+            addedNumber = "";
+            // operator = "";
+            isOperatorChosen = false;
+            isCalculated = false;
+
+            $("#addedNum").empty();
+        }
+        
+
+        // $(".operator").on("click", function(){
+
+        // parseInt
+
+        
+        
+        $("#1").on("click", function() {
+        //  add random value to added
+        addedNumber = addedNumber+a;
+        console.log(addedNumber);
+        $("#addedNum").html("<p>" + addedNumber+"</p>")
+
+        if (addedNumber == compRandom ){
+            win++;
+            console.log(win);
+            $("#win").html("<p>Win: " + win+"</p>");
+            addedNumber = 0;
+        }
+
+        if (addedNumber > compRandom ){
+            loss++;
+            console.log(loss);
+            $("#loss").html("<p>Loss: " + loss+"</p>");
+            addedNumber = 0;
+        }
+        });
+
+        $("#2").on("click", function() {
+        //  add random value to added
+        addedNumber = addedNumber+b;
+        console.log(addedNumber);
+        $("#addedNum").html("<p>" + addedNumber+"</p>")
+        if (addedNumber == compRandom ){
+            win++;
+            console.log(win);
+            $("#win").html("<p>Win: " + win+"</p>");
+            addedNumber = 0;
+        }
+
+        if (addedNumber > compRandom ){
+            loss++;
+            console.log(loss);
+            $("#loss").html("<p>Loss: " + loss+"</p>");
+            addedNumber = 0;
+        }
+        });
+
+        $("#3").on("click", function() {
+        //  add random value to added
+        addedNumber = addedNumber+c;
+        console.log(addedNumber);
+        $("#addedNum").html("<p>" + addedNumber+"</p>")
+        
+        if (addedNumber == compRandom ){
+            win++;
+            console.log(win);
+            $("#win").html("<p>Win: " + win+"</p>");
+            addedNumber = 0;
+        }
+
+        if (addedNumber > compRandom ){
+            loss++;
+            console.log(loss);
+            $("#loss").html("<p>Loss: " + loss+"</p>");
+            addedNumber = 0;
+        }
+        });
+
+        $("#4").on("click", function() {
+        //  add random value to added
+        addedNumber = addedNumber+d;
+        console.log(addedNumber);
+        $("#addedNum").html("<p>" + addedNumber+"</p>")
+       
+        if (addedNumber == compRandom ){
+            win++;
+            console.log(win);
+            $("#win").html("<p>Win: " + win+"</p>");
+            addedNumber = 0;
+        }
+       if (addedNumber > compRandom ){
+            loss++;
+            console.log(loss);
+            $("#loss").html("<p>Loss: " + loss+"</p>");
+            addedNumber = 0;
+        } 
+        
+    });
+    });
+    </script> 
+</div>
+</body>
+</html>
