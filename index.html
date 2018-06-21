@@ -59,6 +59,11 @@
         <div class="col-sm-3" style="background-color: none;"> &nbsp;</div>
         <div id="crystal"class="col-sm-6" style="background-color: none; left:50px;">
                 <img id = "1" class = "crystal-image"src = "assets/images/1.png" alt="1">
+
+                <!-- //grab the id and set the .val for each. and then I use 1 function to call them later. 
+                $("#1").val(a);
+            -->
+
                 <img id = "2" class = "crystal-image"src = "assets/images/2.png" alt="2">
                 <img id = "3" class = "crystal-image"src = "assets/images/3.png" alt="3">
                 <img id = "4" class = "crystal-image"src = "assets/images/4.png" alt="4">
@@ -77,148 +82,9 @@
         </div>
 
 
-
-   <script>
-     $(document).ready(function() {
-        // var one, two, three, four;
-        var win = 0;
-        var loss = 0;
-        var a = 0;
-        var b = 0;
-        var c = 0;
-        var d = 0;
-    
-        
-        // function randomNum() {
-        var x = document.getElementById("compRandom");
-        x.textContent = Math.floor((Math.random() * 120) + 8);
-        var compRandom = x.textContent;
-       
-        // var one = document.getElementById("1");
-         a = Math.floor((Math.random() * 12) + 0);
-        
-        // var two = document.getElementById("2");
-         b = Math.floor((Math.random() * 12) + 0);
-        
-        // var three = document.getElementById("3");
-         c = Math.floor((Math.random() * 12) + 0);
-       
-        // var four = document.getElementById("4");
-         d = Math.floor((Math.random() * 12) + 0);
-       
-        console.log ("a value is:"+ a);
-        console.log ("b value is:"+b);
-        console.log ("c value is:"+c);
-        console.log ("d value is:"+d);
-        console.log ("compRandom value is:" +compRandom);
-       
-        // }
-        // randomNum();
-
-        var isCalculated = false;
-        var addedNumber = 0;
-        var isOperatorChosen = false;
-        // var operator = "";
-
-        function initializeGame() {
-            addedNumber = "";
-            // operator = "";
-            isOperatorChosen = false;
-            isCalculated = false;
-
-            $("#addedNum").empty();
-        }
-        
-
-        // $(".operator").on("click", function(){
-
-        // parseInt
-
-        
-        
-        $("#1").on("click", function() {
-        //  add random value to added
-        addedNumber = addedNumber+a;
-        console.log(addedNumber);
-        $("#addedNum").html("<p>" + addedNumber+"</p>")
-
-        if (addedNumber == compRandom ){
-            win++;
-            console.log(win);
-            $("#win").html("<p>Win: " + win+"</p>");
-            addedNumber = 0;
-        }
-
-        if (addedNumber > compRandom ){
-            loss++;
-            console.log(loss);
-            $("#loss").html("<p>Loss: " + loss+"</p>");
-            addedNumber = 0;
-        }
-        });
-
-        $("#2").on("click", function() {
-        //  add random value to added
-        addedNumber = addedNumber+b;
-        console.log(addedNumber);
-        $("#addedNum").html("<p>" + addedNumber+"</p>")
-        if (addedNumber == compRandom ){
-            win++;
-            console.log(win);
-            $("#win").html("<p>Win: " + win+"</p>");
-            addedNumber = 0;
-        }
-
-        if (addedNumber > compRandom ){
-            loss++;
-            console.log(loss);
-            $("#loss").html("<p>Loss: " + loss+"</p>");
-            addedNumber = 0;
-        }
-        });
-
-        $("#3").on("click", function() {
-        //  add random value to added
-        addedNumber = addedNumber+c;
-        console.log(addedNumber);
-        $("#addedNum").html("<p>" + addedNumber+"</p>")
-        
-        if (addedNumber == compRandom ){
-            win++;
-            console.log(win);
-            $("#win").html("<p>Win: " + win+"</p>");
-            addedNumber = 0;
-        }
-
-        if (addedNumber > compRandom ){
-            loss++;
-            console.log(loss);
-            $("#loss").html("<p>Loss: " + loss+"</p>");
-            addedNumber = 0;
-        }
-        });
-
-        $("#4").on("click", function() {
-        //  add random value to added
-        addedNumber = addedNumber+d;
-        console.log(addedNumber);
-        $("#addedNum").html("<p>" + addedNumber+"</p>")
-       
-        if (addedNumber == compRandom ){
-            win++;
-            console.log(win);
-            $("#win").html("<p>Win: " + win+"</p>");
-            addedNumber = 0;
-        }
-       if (addedNumber > compRandom ){
-            loss++;
-            console.log(loss);
-            $("#loss").html("<p>Loss: " + loss+"</p>");
-            addedNumber = 0;
-        } 
-        
-    });
-    });
+"
+   <script src = "assets/javascript/game.js">
+     
     </script> 
 </div>
 </body>
