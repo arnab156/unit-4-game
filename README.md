@@ -1,5 +1,5 @@
 # unit-4-game
-This is a Crytal Collector game.
+This is a Crytal Collector game using JAVASCRIPT.
 https://arnab156.github.io/unit-4-game/
 
 1. You will be given a random number at the start of the game. if you do not like the number, please refresh the page
